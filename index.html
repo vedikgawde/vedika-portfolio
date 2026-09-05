@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vedika Gawde — Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080808;
+            color: #f5f5f0;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.5;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 5vw 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-small {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.55;
+        }
+
+        .hero-title {
+            font-size: clamp(70px, 16vw, 240px);
+            line-height: 0.72;
+            letter-spacing: -10px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .hero-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .hero-description {
+            max-width: 420px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #aaa;
+        }
+
+        .scroll-text {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #c8ff32;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 120px 5vw;
+        }
+
+        .section-number {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #c8ff32;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: clamp(50px, 9vw, 130px);
+            line-height: 0.85;
+            letter-spacing: -5px;
+            text-transform: uppercase;
+            margin-bottom: 80px;
+        }
+
+        /* PROJECTS */
+
+        .project {
+            border-top: 1px solid #333;
+            padding: 45px 0;
+            display: grid;
+            grid-template-columns: 80px 1fr 120px;
+            gap: 30px;
+            align-items: start;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            padding-left: 15px;
+        }
+
+        .project-number {
+            color: #c8ff32;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .project-name {
+            font-size: clamp(28px, 4vw, 55px);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+        }
+
+        .project-type {
+            color: #888;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .project-description {
+            max-width: 650px;
+            color: #aaa;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .project-arrow {
+            text-align: right;
+            font-size: 30px;
+            color: #c8ff32;
+        }
+
+        /* ABOUT */
+
+        .about-intro {
+            max-width: 900px;
+            font-size: clamp(24px, 4vw, 48px);
+            line-height: 1.15;
+            margin-bottom: 100px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 70px 80px;
+        }
+
+        .about-block {
+            border-top: 1px solid #333;
+            padding-top: 25px;
+        }
+
+        .about-heading {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #c8ff32;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .about-block h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .about-block p {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            border: 1px solid #444;
+            padding: 10px 14px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: #ddd;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-title {
+            font-size: clamp(55px, 11vw, 160px);
+            line-height: 0.85;
+            letter-spacing: -7px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .contact-link {
+            border-bottom: 1px solid #555;
+            padding-bottom: 8px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .contact-link:hover {
+            color: #c8ff32;
+            border-color: #c8ff32;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #333;
+            padding: 25px 5vw;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #666;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 8px;
+            }
+
+            .hero {
+                padding: 120px 20px 40px;
+            }
+
+            .hero-title {
+                font-size: 23vw;
+                letter-spacing: -5px;
+            }
+
+            .hero-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px;
+            }
+
+            section {
+                padding: 90px 20px;
+            }
+
+            .section-title {
+                letter-spacing: -3px;
+                margin-bottom: 50px;
+            }
+
+            .project {
+                grid-template-columns: 45px 1fr 30px;
+                gap: 10px;
+                padding: 30px 0;
+            }
+
+            .project-name {
+                font-size: 28px;
+            }
+
+            .project-arrow {
+                font-size: 20px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .contact-title {
+                letter-spacing: -4px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">VEDIKA GAWDE</div>
+
+        <div class="nav-links">
+            <a href="#work">WORK</a>
+            <a href="#about">ABOUT</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </nav>
+
+
+    <!-- 01 — INTRODUCTION -->
+
+    <header class="hero">
+
+        <div class="hero-small">
+            Business • Projects • Creative
+        </div>
+
+        <div class="hero-title">
+            <span>VEDIKA</span>
+            <span>GAWDE</span>
+        </div>
+
+        <div class="hero-bottom">
+
+            <div class="hero-description">
+                Turning ideas, problems and data into practical solutions.
+                <br><br>
+                Business analysis, project coordination, creative thinking
+                and a curiosity to keep learning.
+            </div>
+
+            <div class="scroll-text">
+                SCROLL TO EXPLORE ↓
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- 02 — SELECTED WORK -->
+
+    <section id="work">
+
+        <div class="section-number">01 — PROJECTS</div>
+
+        <h2 class="section-title">
+            SELECTED<br>
+            WORK
+        </h2>
+
+
+        <!-- PROJECT 01 -->
+
+        <div class="project">
+
+            <div class="project-number">
+                01
+            </div>
+
+            <div>
+
+                <div class="project-type">
+                    Business Analyst Portfolio
+                </div>
+
+                <h3 class="project-name">
+                    Instagram AI<br>
+                    Creator Studio
+                </h3>
+
+                <p class="project-description">
+                    Developed an AI-based idea to improve Instagram creators'
+                    content planning and engagement. Created a Business Case,
+                    BRD, FRD, User Stories, basic process flows and wireframes.
+                </p>
+
+            </div>
+
+            <div class="project-arrow">
+                ↗️
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT 02 -->
+
+        <div class="project">
+
+            <div class="project-number">
+                02
+            </div>
+
+            <div>
+
+                <div class="project-type">
+                    Project Management Portfolio
+                </div>
+
+                <h3 class="project-name">
+                    Spotify Premium<br>
+                    Family Plan
+                </h3>
+
+                <p class="project-description">
+                    Planned a proposed enhancement using project management
+                    frameworks including a Project Charter, WBS, Risk Register,
+                    RAID Log, RACI Matrix and Communication Plan.
+                </p>
+
+            </div>
+
+            <div class="project-arrow">
+                ↗️
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT 03 -->
+
+        <div class="project">
+
+            <div class="project-number">
+                03
+            </div>
+
+            <div>
+
+                <div class="project-type">
+                    Power BI
+                </div>
+
+                <h3 class="project-name">
+                    IPL 2026<br>
+                    Analytics Dashboard
+                </h3>
+
+                <p class="project-description">
+                    Built an interactive dashboard analysing team and player
+                    performance using KPIs, visualisations and filters to
+                    generate business insights.
+                </p>
+
+            </div>
+
+            <div class="project-arrow">
+                ↗️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 03 — MORE ABOUT VEDIKA -->
+
+    <section id="about">
+
+        <div class="section-number">02 — GET TO KNOW ME</div>
+
+        <h2 class="section-title">
+            MORE ABOUT<br>
+            VEDIKA
+        </h2>
+
+
+        <p class="about-intro">
+            A B.Tech Information Technology graduate exploring the space
+            between business, projects, creativity and technology.
+        </p>
+
+
+        <div class="about-grid">
+
+
+            <!-- EXPERIENCE -->
+
+            <div class="about-block">
+
+                <div class="about-heading">
+                    Experience & Leadership
+                </div>
+
+                <h3>E-Cell</h3>
+
+                <p>
+                    Lead & Co-Lead — Hospitality & Content Teams
+                    <br><br>
+                    Coordinated event, hospitality and content activities.
+                    Managed team communication, responsibilities and
+                    follow-ups while supporting content planning and
+                    event execution.
+                </p>
+
+                <h3>College Social Media & Event Team</h3>
+
+                <p>
+                    Supported social media, content and event activities
+                    while collaborating with the team on planning and
+                    execution.
+                </p>
+
+            </div>
+
+
+            <!-- SKILLS -->
+
+            <div class="about-block">
+
+                <div class="about-heading">
+                    Skills
+                </div>
+
+                <div class="skills">
+
+                    <span class="skill">Business Analysis</span>
+                    <span class="skill">Project Coordination</span>
+                    <span class="skill">Project Planning</span>
+                    <span class="skill">Stakeholder Coordination</span>
+                    <span class="skill">Task Tracking</span>
+                    <span class="skill">Project Documentation</span>
+                    <span class="skill">Agile & Scrum</span>
+                    <span class="skill">Content Creation</span>
+                    <span class="skill">Content Planning</span>
+                    <span class="skill">Social Media</span>
+                    <span class="skill">Event Coordination</span>
+                    <span class="skill">Creative Ideation</span>
+                    <span class="skill">Microsoft Excel</span>
+                    <span class="skill">Power BI</span>
+                    <span class="skill">Canva</span>
+                    <span class="skill">Jira</span>
+                    <span class="skill">CapCut</span>
+                    <span class="skill">Google Forms</span>
+                    <span class="skill">Communication</span>
+                    <span class="skill">Leadership</span>
+                    <span class="skill">Teamwork</span>
+                    <span class="skill">Adaptability</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- EDUCATION -->
+
+            <div class="about-block">
+
+                <div class="about-heading">
+                    Education
+                </div>
+
+                <h3>B.Tech — Information Technology</h3>
+
+                <p>
+                    Shah & Anchor Kutchhi Engineering College
+                    <br>
+                    University of Mumbai · 2025
+                    <br>
+                    CGPA: 7.3
+                </p>
+
+                <h3>HSC — Science</h3>
+
+                <p>
+                    Ramanand Arya D.A.V College, Bhandup · 2021
+                    <br>
+                    76.17%
+                </p>
+
+            </div>
+
+
+            <!-- CERTIFICATIONS -->
+
+            <div class="about-block">
+
+                <div class="about-heading">
+                    Certifications
+                </div>
+
+                <p>
+                    Deloitte Data Analytics Job Simulation — Forage
+                </p>
+
+                <p>
+                    Accenture Technology Apprenticeship Job Simulation —
+                    Forage
+                </p>
+
+                <p>
+                    Exploring Blockchain — Infosys Springboard
+                </p>
+
+                <p>
+                    AI Essentials Workshop — Intel Digital Readiness Program
+                </p>
+
+            </div>
+
+
+            <!-- PUBLICATION -->
+
+            <div class="about-block">
+
+                <div class="about-heading">
+                    Publication
+                </div>
+
+                <h3>
+                    Child Mortality Prediction
+                </h3>
+
+                <p>
+                    Co-Author: Child Mortality Prediction — ICT Analysis
+                    and Applications, published in the Proceedings of the
+                    10th International Conference on ICT for Sustainable
+                    Development (ICT4SD 2025), Vol. 8.
+                </p>
+
+            </div>
+
+
+            <!-- WHAT I'M LOOKING FOR -->
+
+            <div class="about-block">
+
+                <div class="about-heading">
+                    Currently Exploring
+                </div>
+
+                <p>
+                    Business Analysis
+                    <br>
+                    Project Coordination
+                    <br>
+                    Creative & Content
+                    <br>
+                    Marketing
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <div class="section-number">
+            03 — CONTACT
+        </div>
+
+        <h2 class="contact-title">
+            LET'S WORK<br>
+            TOGETHER
+        </h2>
+
+        <div class="contact-links">
+
+            <a class="contact-link"
+               href="mailto:vedikagawde18@gmail.com">
+                EMAIL
+            </a>
+
+            <a class="contact-link"
+               href="tel:+918691993654">
+                PHONE
+            </a>
+
+            <a class="contact-link"
+               href="https://www.linkedin.com/"
+               target="_blank">
+                LINKEDIN
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>VEDIKA GAWDE © 2026</span>
+
+        <span>
+            BUSINESS • PROJECTS • CREATIVE
+        </span>
+
+    </footer>
+
+</body>
+</html>
